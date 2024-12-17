@@ -83,18 +83,17 @@ containerMain.addEventListener('mousemove', (e)=>{
         containerMain.appendChild(trailElement);
     
         // Fade the trail element out after a short time and then remove it
-        // setTimeout(() => {
-        //     trailElement.style.transition = 'opacity 0.5s';
-        //     trailElement.style.opacity = '0';
+        setTimeout(() => {
+            trailElement.style.transition = 'opacity 0.5s';
+            trailElement.style.opacity = '0';
             
-        //     // Remove the element after fade-out
-        //     setTimeout(() => {
-        //         trailElement.remove();
-        //     }, 500); // Time after which element is removed (same as fade-out duration)
-        // }, 0);
+            // Remove the element after fade-out
+            setTimeout(() => {
+                trailElement.remove();
+            }, 500); // Time after which element is removed (same as fade-out duration)
+        }, 0);
 
 
-        // ========
         
 
     }
