@@ -7,58 +7,53 @@ function createRandomColor()
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+function createGrid(n)
+{
+    // main container for the grid
+    const containerMain = document.createElement('div');
+    containerMain.setAttribute('class', 'mainContainer');
 
-// main container
-const containerMain = document.createElement('div');
-containerMain.setAttribute('class', 'mainContainer');
+    const body = document.querySelector('body');
 
-const body = document.querySelector('body');
-
-
-
-for (let index = 0; index < 4; index++) {
-    let groupOf4 = document.createElement('div');
-    groupOf4.setAttribute('class', 'groupOf4');
-
-    for (let k = 0; k < 4; k++) {
-        let grid = document.createElement('div');
-        // grid.textContent = `grid ${index} ${k}`
-        grid.setAttribute('class', 'grid');
-        groupOf4.appendChild(grid);
+    for (let index = 0; index < n; index++) {
+        let group = document.createElement('div');
+        group.setAttribute('class', 'groupOf4');
+    
+        for (let k = 0; k < n; k++) {
+            let grid = document.createElement('div');
+            grid.setAttribute('class', 'grid');
+            group.appendChild(grid);
+        }
+        containerMain.appendChild(group);
     }
-    containerMain.appendChild(groupOf4);
-
+    
+    body.appendChild(containerMain);
 }
 
-body.appendChild(containerMain);
 
-
-
+createGrid(4);
 // hover
+const containerMain = document.querySelector('.mainContainer');
 
 containerMain.addEventListener('mouseover', (e)=>{
     let target = e.target;
     if (target.classList.contains('grid')) {
-        // target.classList.add('changeBackground');
-        // target.style.backgroundColor = 'red';
-
         let color = createRandomColor();
         target.style.backgroundColor = color;
     }
 });
 
-containerMain.addEventListener('mouseout', (e)=>{
-    let target = e.target;
+// containerMain.addEventListener('mouseout', (e)=>{
+//     let target = e.target;
     
-    if (target.classList.contains('grid')) {
-        // target.classList.remove('changeBackground');
+//     if (target.classList.contains('grid')) {
 
-        let color = createRandomColor();
+//         let color = createRandomColor();
         
-        target.style.backgroundColor = color;
-        // target.style.backgroundColor = ''
-    }
-});
+//         target.style.backgroundColor = color;
+//         // target.style.backgroundColor = ''
+//     }
+// });
 
 containerMain.addEventListener('mousemove', (e)=>{
     let target = e.target;
@@ -104,5 +99,11 @@ containerMain.addEventListener('mousemove', (e)=>{
 
 
 const btnAskUser = document.createElement('button');
-btnAskUser.textContent = 'Please enter the number of squares per side for the new grid';
+btnAskUser.textContent = 'Press the button to enter the number of grids !!!';
 body.insertBefore(btnAskUser, body.childNodes[0]);
+
+btnAskUser.addEventListener(()=>{
+    let numberOfGrid = prompt('Please enter the number');
+    createGrid(numberOfGrid);
+});
+
