@@ -1,0 +1,31 @@
+.mainContainer
+{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 10px;
+    background-color: skyblue;
+    padding: 14px;
+}
+
+.groupOf4
+{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: skyblue;
+    gap: 10px;
+    flex: 1;
+}
+
+.grid
+{
+    /* border-width: 4px; */
+    /* border-style: solid; */
+    /* border-color: black; */
+    background-color: blanchedalmond;
+    padding: 4px;
+    /* margin: auto; */
+    width: 160px;
+    height: 100px;
+}
