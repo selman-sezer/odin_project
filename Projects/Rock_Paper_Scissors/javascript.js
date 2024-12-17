@@ -83,13 +83,9 @@ function playGame()
     
     }
 
-    for (let index = 0; index < 5; index++) {
-        let h = getHumanChoice();
-        let c = getComputerChoice();
-        playRound(h,c);
-    }
 
     humanScore > computerScore ?  console.log(`You won the game !`) : console.log("Computer won the game !!");
 }
 
 playGame();
+
