@@ -1,3 +1,11 @@
+// GLOBAL VARIABLES
+const BODY = document.querySelector('BODY');
+// main container for the grid
+const CONTAINER_MAIN = document.createElement('div');
+CONTAINER_MAIN.setAttribute('class', 'mainContainer');
+
+
+
 // FUNCTIONS
 function createRandomColor()
 {
@@ -7,35 +15,36 @@ function createRandomColor()
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+
+
 function createGrid(n)
 {
-    // main container for the grid
-    const containerMain = document.createElement('div');
-    containerMain.setAttribute('class', 'mainContainer');
-
-    const body = document.querySelector('body');
+    while (CONTAINER_MAIN.firstChild) {
+        CONTAINER_MAIN.removeChild(CONTAINER_MAIN.firstChild);
+    }
 
     for (let index = 0; index < n; index++) {
         let group = document.createElement('div');
-        group.setAttribute('class', 'groupOf4');
+        group.setAttribute('class', 'group');
     
         for (let k = 0; k < n; k++) {
             let grid = document.createElement('div');
             grid.setAttribute('class', 'grid');
             group.appendChild(grid);
         }
-        containerMain.appendChild(group);
+        CONTAINER_MAIN.appendChild(group);
     }
     
-    body.appendChild(containerMain);
+    BODY.appendChild(CONTAINER_MAIN);
+}
+
+function mainFunction()
+{
+
 }
 
 
-createGrid(4);
-// hover
-const containerMain = document.querySelector('.mainContainer');
-
-containerMain.addEventListener('mouseover', (e)=>{
+CONTAINER_MAIN.addEventListener('mouseover', (e)=>{
     let target = e.target;
     if (target.classList.contains('grid')) {
         let color = createRandomColor();
@@ -43,19 +52,9 @@ containerMain.addEventListener('mouseover', (e)=>{
     }
 });
 
-// containerMain.addEventListener('mouseout', (e)=>{
-//     let target = e.target;
-    
-//     if (target.classList.contains('grid')) {
 
-//         let color = createRandomColor();
-        
-//         target.style.backgroundColor = color;
-//         // target.style.backgroundColor = ''
-//     }
-// });
 
-containerMain.addEventListener('mousemove', (e)=>{
+CONTAINER_MAIN.addEventListener('mousemove', (e)=>{
     let target = e.target;
     
     if (target.classList.contains('grid')) {
@@ -74,8 +73,8 @@ containerMain.addEventListener('mousemove', (e)=>{
         trailElement.style.backgroundColor = 'black'; // Color of the trail
         trailElement.style.pointerEvents = 'none'; // Prevent the trail from interfering with other elements
         
-        // Append the trail element to the body or containerMain
-        containerMain.appendChild(trailElement);
+        // Append the trail element to the BODY or CONTAINER_MAIN
+        CONTAINER_MAIN.appendChild(trailElement);
     
         // Fade the trail element out after a short time and then remove it
         setTimeout(() => {
@@ -96,14 +95,18 @@ containerMain.addEventListener('mousemove', (e)=>{
 
 
 
-
+createGrid(4);
 
 const btnAskUser = document.createElement('button');
 btnAskUser.textContent = 'Press the button to enter the number of grids !!!';
-body.insertBefore(btnAskUser, body.childNodes[0]);
+BODY.insertBefore(btnAskUser, BODY.childNodes[0]);
 
-btnAskUser.addEventListener(()=>{
+btnAskUser.addEventListener('click', ()=>{
     let numberOfGrid = prompt('Please enter the number');
-    createGrid(numberOfGrid);
-});
+    if (numberOfGrid >= 100) {
+        numberOfGrid = prompt('Please enter the number less than 100');
+    }
 
+    createGrid(parseInt(numberOfGrid));
+    
+});
