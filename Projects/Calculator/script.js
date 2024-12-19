@@ -6,7 +6,7 @@ let operator = '';
 let leftOperand = 0;
 let rightOperand = 0;
 let anOperatorSeen = false;
-
+let lastSeenCharacterOper = false;
 
 
 
@@ -49,7 +49,7 @@ function operate()
     value = div(leftOperand, rightOperand);
   }
   else if (operator == 'modulo') {
-    value = modulo(a,b);
+    value = modulo(leftOperand,rightOperand);
   }
   return value;
 }
@@ -70,7 +70,7 @@ const btnFive = document.querySelector('#five');
 const btnTwo = document.querySelector('#two');
 const btnZero = document.querySelector('#zero');
 
-const btnModular  = document.querySelector('#modular');
+const btnModulo  = document.querySelector('#modulo');
 const btnNine     = document.querySelector('#nine');
 const btnSix      = document.querySelector('#six');
 const btnThree    = document.querySelector('#three');
