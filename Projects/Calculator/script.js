@@ -20,8 +20,8 @@ const sub = function(a,b) {
 	return a-b
 };
 
-const mult = function(args) {
-  return args.reduce((a,b)=> { return a*b}, 1);
+const mult = function(a,b) {
+  return a*b;
 };
 
 const div = function(a,b)
@@ -115,19 +115,26 @@ btnAc.addEventListener('click', ()=>
 
 
 
-for(let digit of digits)
-{
+digits.forEach( (digit)=>{
   digit.addEventListener('click' , ()=> {
+
+    if (lastSeenCharacterOper) {
+      lastSeenCharacterOper = false;
+      screenValue = '';
+      screen.textContent = screenValue;
+    }
+
     screenValue = screenValue + digit.textContent;
     screen.textContent = screenValue;
     return screenValue;
-  } );
-}
+    });
+});
 
 
 
 operators.forEach((op) => {
   op.addEventListener('click', () => {
+    lastSeenCharacterOper = true;
     if (!anOperatorSeen) {
       anOperatorSeen = true;                
       leftOperand = parseInt(screenValue);
