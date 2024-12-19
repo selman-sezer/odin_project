@@ -120,7 +120,7 @@ btnAc.addEventListener('click', ()=>
 digits.forEach( (digit)=>{
   digit.addEventListener('click' , ()=> {
 
-    if (lastSeenCharacterOper) {
+    if (lastSeenCharacterOper && screenValue != '-') {
       lastSeenCharacterOper = false;
       screenValue = '';
       screen.textContent = screenValue;
@@ -136,26 +136,37 @@ digits.forEach( (digit)=>{
 
 operators.forEach((op) => {
   op.addEventListener('click', () => {
-    lastSeenCharacterOper = true;
+
     if (!anOperatorSeen) {
       anOperatorSeen = true;                
-      leftOperand = parseFloat(screenValue).toFixed(5);
+      leftOperand = parseFloat(screenValue);
       operator = op.id; 
       screenValue = '';
       screen.textContent = screenValue;
+      lastSeenCharacterOper = true;
+      
 
     }
     else
     {
-      rightOperand = parseFloat(screenValue).toFixed(5);
-      let result = operate(leftOperand, rightOperand);
-      
-      screenValue = result.toString();
-      screen.textContent = screenValue;
+      if(lastSeenCharacterOper)
+      {
+        operator = op.id; 
+        lastSeenCharacterOper = true;
+      }
+      else
+      {
+        lastSeenCharacterOper = true;
+        rightOperand = parseFloat(screenValue);
+        let result = operate(leftOperand, rightOperand);
+        result = Number.isInteger(result) ? result : parseFloat(result.toFixed(10));
+        screenValue = result.toString();
+        screen.textContent = screenValue;
+  
+        leftOperand = result;
+        operator = op.id; 
+      }
 
-      leftOperand = result;
-
-      operator = op.id; 
     }
   });
 });
@@ -164,8 +175,10 @@ operators.forEach((op) => {
 btnCalc.addEventListener('click', ()=>{
   lastSeenCharacterOper = true;
 
-  rightOperand = parseFloat(screenValue).toFixed(5);
+  rightOperand = parseFloat(screenValue);
   let result = operate(leftOperand, rightOperand);
+  result = Number.isInteger(result) ? result : parseFloat(result.toFixed(10));
+
 
   screenValue = result.toString();
   screen.textContent = screenValue;
@@ -196,4 +209,13 @@ btnPoint.addEventListener('click', ()=>{
     }
   }
   screen.textContent = screenValue;
+});
+
+
+btnSign.addEventListener('click', ()=>{
+  if (screenValue == '' || lastSeenCharacterOper ) {
+    screenValue = '-';
+    screen.textContent = screenValue;
+    lastSeenCharacterOper = false;
+  }
 });
