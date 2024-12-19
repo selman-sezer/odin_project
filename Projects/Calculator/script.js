@@ -1,6 +1,7 @@
 // GLOBAL VARIBLES
 let value = 0;
-let screen = value.toString();
+
+let screenValue = '';
 let operator = '';
 let leftOperand = 0;
 let rightOperand = 0;
@@ -46,6 +47,8 @@ function operate()
 
 
 // Selectin buttons
+const screen = document.querySelector('.screen');
+
 const btnAc = document.querySelector('#ac');
 const btnSeven = document.querySelector('#seven');
 const btnFour = document.querySelector('#four');
@@ -59,7 +62,7 @@ const btnTwo = document.querySelector('#two');
 const btnZero = document.querySelector('#zero');
 
 const btnModular  = document.querySelector('#modular');
-const btnNine     = document.querySelector('#none');
+const btnNine     = document.querySelector('#nine');
 const btnSix      = document.querySelector('#six');
 const btnThree    = document.querySelector('#three');
 const btnPoint    = document.querySelector('#point');
@@ -71,7 +74,25 @@ const btnAdd       = document.querySelector('#add');
 const btnCalc      = document.querySelector('#calc');
 
 
+btnZero.textContent = '0';
+btnOne.textContent = '1';
+btnTwo.textContent = '2';
+btnThree.textContent = '3';
+btnFour.textContent = '4';
+btnFive.textContent = '5';
+btnSix.textContent = '6';
+btnSeven.textContent = '7';
+btnEight.textContent = '8';
+btnNine.textContent = '9';
 
-
+const digits = document.querySelectorAll('.digit');
+for(let digit of digits)
+{
+  digit.addEventListener('click' , ()=> {
+    screenValue = screenValue + digit.textContent;
+    screen.textContent = screenValue;
+    return screenValue;
+  } );
+}
 
 
