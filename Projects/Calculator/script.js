@@ -139,7 +139,7 @@ operators.forEach((op) => {
     lastSeenCharacterOper = true;
     if (!anOperatorSeen) {
       anOperatorSeen = true;                
-      leftOperand = parseInt(screenValue);
+      leftOperand = parseFloat(screenValue).toFixed(5);
       operator = op.id; 
       screenValue = '';
       screen.textContent = screenValue;
@@ -147,7 +147,7 @@ operators.forEach((op) => {
     }
     else
     {
-      rightOperand = parseInt(screenValue);
+      rightOperand = parseFloat(screenValue).toFixed(5);
       let result = operate(leftOperand, rightOperand);
       
       screenValue = result.toString();
@@ -164,7 +164,7 @@ operators.forEach((op) => {
 btnCalc.addEventListener('click', ()=>{
   lastSeenCharacterOper = true;
 
-  rightOperand = parseInt(screenValue);
+  rightOperand = parseFloat(screenValue).toFixed(5);
   let result = operate(leftOperand, rightOperand);
 
   screenValue = result.toString();
@@ -174,3 +174,26 @@ btnCalc.addEventListener('click', ()=>{
 });
 
 
+
+btnDelete.addEventListener('click', ()=>{
+  if(screenValue != '')
+  {
+    screenValue = screenValue.slice(0, screenValue.length-1);
+    screen.textContent = screenValue;
+  }
+});
+
+btnPoint.addEventListener('click', ()=>{
+  if(screenValue == '')
+  {
+    screenValue = '.';
+  }
+  else
+  {
+    if(screenValue[screenValue.length-1] != '.')
+    {
+      screenValue = screenValue + '.';
+    }
+  }
+  screen.textContent = screenValue;
+});
