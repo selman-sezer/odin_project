@@ -92,9 +92,24 @@ btnSix.textContent = '6';
 btnSeven.textContent = '7';
 btnEight.textContent = '8';
 btnNine.textContent = '9';
+btnAc.textContent = 'AC';
 
 const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operator');
+
+
+// EVENTS
+btnAc.addEventListener('click', ()=>
+{
+  seenAnOperator = false;
+  screenValue = '';
+  screen.textContent = screenValue;
+  operator = '';
+  leftOperand = 0;
+  rightOperand = 0;
+})
+
+
 
 for(let digit of digits)
 {
