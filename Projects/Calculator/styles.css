@@ -3,8 +3,16 @@
 
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
     height: 500px;
     width: 360px;
+}
+
+.buttons
+{
+    flex: 1;
+    display: flex;
+
 }
 
 .firstCol,
