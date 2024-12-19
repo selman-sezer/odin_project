@@ -34,6 +34,8 @@ const modulo = function(a,b)
   return a%b;
 }
 
+
+
 function operate()
 {
   if (operator == 'add') {
@@ -157,4 +159,18 @@ operators.forEach((op) => {
     }
   });
 });
+
+
+btnCalc.addEventListener('click', ()=>{
+  lastSeenCharacterOper = true;
+
+  rightOperand = parseInt(screenValue);
+  let result = operate(leftOperand, rightOperand);
+
+  screenValue = result.toString();
+  screen.textContent = screenValue;
+
+  anOperatorSeen = false;
+});
+
 
