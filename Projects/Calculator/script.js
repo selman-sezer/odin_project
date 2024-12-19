@@ -5,7 +5,8 @@ let screenValue = '';
 let operator = '';
 let leftOperand = 0;
 let rightOperand = 0;
-let seenAnOperator = false;
+let anOperatorSeen = false;
+
 
 
 
@@ -98,10 +99,13 @@ const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operator');
 
 
+
+// ================
 // EVENTS
+// ================
 btnAc.addEventListener('click', ()=>
 {
-  seenAnOperator = false;
+  anOperatorSeen = false;
   screenValue = '';
   screen.textContent = screenValue;
   operator = '';
@@ -119,4 +123,31 @@ for(let digit of digits)
     return screenValue;
   } );
 }
+
+
+
+operators.forEach((op) => {
+  op.addEventListener('click', () => {
+    if (!anOperatorSeen) {
+      anOperatorSeen = true;                
+      leftOperand = parseInt(screenValue);
+      operator = op.id; 
+      screenValue = '';
+      screen.textContent = screenValue;
+
+    }
+    else
+    {
+      rightOperand = parseInt(screenValue);
+      let result = operate(leftOperand, rightOperand);
+      
+      screenValue = result.toString();
+      screen.textContent = screenValue;
+
+      leftOperand = result;
+
+      operator = op.id; 
+    }
+  });
+});
 
