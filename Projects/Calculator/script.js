@@ -5,6 +5,8 @@ let screenValue = '';
 let operator = '';
 let leftOperand = 0;
 let rightOperand = 0;
+let seenAnOperator = false;
+
 
 
 
@@ -13,11 +15,11 @@ const add = function(a,b) {
 	return a+b
 };
 
-const subtract = function(a,b) {
+const sub = function(a,b) {
 	return a-b
 };
 
-const multiply = function(args) {
+const mult = function(args) {
   return args.reduce((a,b)=> { return a*b}, 1);
 };
 
@@ -26,23 +28,29 @@ const div = function(a,b)
     return a/b;
 }
 
+const modulo = function(a,b)
+{
+  return a%b;
+}
+
 function operate()
 {
-  if (operator == '+') {
+  if (operator == 'add') {
     value = add(leftOperand, rightOperand);
   }
-  else if (operator == '-') {
-    value = subtract(leftOperand, rightOperand);
+  else if (operator == 'sub') {
+    value = sub(leftOperand, rightOperand);
   }
-  else if (operator == '*') {
-    value = multiply(leftOperand, rightOperand);
+  else if (operator == 'mult') {
+    value = mult(leftOperand, rightOperand);
   }
-  else if (operator == '/') {
+  else if (operator == 'div') {
     value = div(leftOperand, rightOperand);
   }
-  else if (operator == '%') {
-    value = leftOperand % rightOperand;
+  else if (operator == 'modulo') {
+    value = modulo(a,b);
   }
+  return value;
 }
 
 
@@ -86,6 +94,8 @@ btnEight.textContent = '8';
 btnNine.textContent = '9';
 
 const digits = document.querySelectorAll('.digit');
+const operators = document.querySelectorAll('.operator');
+
 for(let digit of digits)
 {
   digit.addEventListener('click' , ()=> {
@@ -94,5 +104,4 @@ for(let digit of digits)
     return screenValue;
   } );
 }
-
 
