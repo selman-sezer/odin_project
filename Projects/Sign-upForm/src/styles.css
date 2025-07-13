@@ -1,16 +1,19 @@
 .mainContainer
 {
     display: flex;
-    /* flex-direction: row; */
-    justify-content: space-around;
+    /* justify-content: space-around; */
+
     height: 100vh;
     background-color: aqua;
+    /* background-image: url("cat-front.png"); */
 }
 
 .mainContainer  .leftSide
 {
     flex : auto;
     background-color: green;
+    background-image: url('./assets/zoshua-colah-hMNJMDkaUdI-unsplash.jpg');
+    background-size: cover;
 }
 
 .mainContainer  .rightSide 
@@ -35,43 +38,149 @@
 
 }
 
+@font-face {
+    font-family: my-form-font;
+    src: url(./assets/EncodeSans_SemiCondensed-Regular.ttf);
+  }
+
+.formUpperText
+{
+    font-size: 1.4  rem;
+}
+
 .rightSide > .middle
 {
     background-color: rgb(223, 220, 213);
     flex : auto;
-
-    /* display: grid; */
-    /* grid-template-columns: 30% 70%; */
-    gap : 10px;
+    padding: 1rem;
+    font-family: my-form-font, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 
-.rightSide div
+/* .rightSide div
 {
     border: 1px solid;
+} */
+
+
+
+
+.class1
+{
+    display: flex;
+    justify-content:flex-start;
+    gap : 3rem;
+    margin-top: 1rem;
 }
+
+
 
 .rightSide > .button
 {
-    padding: 3%;
+    padding: 1rem;
     background-color: rgb(244, 242, 236);
     flex : auto;
-}
+    font-size: 1.06rem;
+}   
 
 
 .rightSide > .upperText > div
 {
     text-align: left;
-    padding: 2%;
+    padding: 2rem;
     font-size: 150%;
     font-weight:bold;
-    position: relative;
-    bottom: 5%;
 }
 
 .logIn *
 {
-
-    text-decoration: none;
-    
+    text-decoration: none;   
 }
+
+
+
+input
+{
+    width: 12rem;   
+}
+
+input:focus
+{
+    box-shadow: 10px 5px 5px #549df4;
+    border-color: blue;
+    border-width: 0.2rem;
+}
+
+
+.logoContainer
+{
+    display: flex;
+
+    justify-content:space-around;
+    position: relative;
+    top : 21%;
+
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+.subContainer
+{
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 1;
+    padding: 2rem;
+
+
+}
+
+.logoImg
+{
+    max-height: 5rem;
+    height: auto;   
+    flex: 1;
+}
+
+
+
+@font-face {
+    font-family: my-font;
+    src: url(./assets/Norse-Bold.otf);
+  }
+
+.logoText
+{
+    text-align: center;
+    font-size: 3rem;
+    font-family: my-font, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    flex: 1;
+}
+
+
+button {
+    color: rgb(255, 255, 255); 
+    width: 10rem;
+    font-size: 1rem; 
+    line-height: 1rem; 
+    padding: 0.5rem; 
+    border-radius: 1rem; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); 
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; 
+    border: 1px solid rgb(28, 110, 164); 
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.myButton:hover {
+    background: #1C6EA4; }
+
+.myButton:active {
+    background: #144E75; }

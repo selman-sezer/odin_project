@@ -1,3 +1,5 @@
 import "./styles.css";
 
-const upperText = document.querySelector(".upperText>div");
+const left = document.querySelector(".leftSide");
+
+left.style.backgroundImage
